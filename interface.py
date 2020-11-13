@@ -11,11 +11,14 @@ class Interface(tk.Frame):
         self.ToDoTaskBox.grid(row = 1, column = 3, sticky = "N")
         self.CompletedTaskBox = tk.Listbox(self)
         self.CompletedTaskBox.grid(row = 3, column = 3)
-        self.AddingButton = tk.Button(self, text = "Add new task", command = lambda:[ButtonCommands.add_new_task(self,taskbox = self.ToDoTaskBox, entry = self.writeEntry)])
+        self.AddingButton = tk.Button(self, text = "Add new task", command = \
+            lambda:[ButtonCommands.add_new_task(self,taskbox = self.ToDoTaskBox, entry = self.writeEntry)])
         self.AddingButton.grid(row = 1, column = 1, sticky = "N")
-        self.DeletingTaskButton = tk.Button(self, text = "Delete this task", command = lambda:[ButtonCommands.delete_task(self, taskbox = self.ToDoTaskBox)])
+        self.DeletingTaskButton = tk.Button(self, text = "Delete this task", command = \
+            lambda:[ButtonCommands.delete_task(self, taskbox = self.ToDoTaskBox)])
         self.DeletingTaskButton.grid(row = 1, column = 2)
-        self.MarkingCompleteTaskButton = tk.Button(self, text = "Complete task", command = lambda:[ButtonCommands.complete_task(self, ct_taskbox = self.CompletedTaskBox, td_taskbox = self.ToDoTaskBox)])
+        self.MarkingCompleteTaskButton = tk.Button(self, text = "Complete task", command = \
+            lambda:[ButtonCommands.complete_task(self, ct_taskbox = self.CompletedTaskBox, td_taskbox = self.ToDoTaskBox)])
         self.MarkingCompleteTaskButton.grid(row = 1, column = 2, sticky = "S")
         self.TitleToDoTaskLabel = tk.Label(self, text = "To-Do:")
         self.TitleToDoTaskLabel.grid(row = 0, column = 3)
