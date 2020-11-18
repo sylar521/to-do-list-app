@@ -1,39 +1,9 @@
-import tkinter as tk
-#from tkinter import messagebox
-
-class Login(tk.Toplevel):
-
-    def __init__(self, master):
-        tk.Toplevel.__init__(self, master)
-        self.master = master
-        self.grid()
-        self.title("Login")
-        self.createTopLevel()
-
-    def onButtonPress(self):
-        return True
-
-    def createTopLevel(self):
-        self.TopLevelLabels()
-        self.TopLevelEntries()
-        self.TopLevelButtons()
-        self.master.withdraw()
-
-    def TopLevelLabels(self):
-        self.LoginLabel = tk.Label(self, text="Login")
-        self.LoginLabel.grid(row = 0, column = 0, padx = 10, pady = 10)
-        self.PasswordLabel = tk.Label(self, text="Password")
-        self.PasswordLabel.grid(row = 1, column = 0, padx = 10, pady = 10)
-
-    def TopLevelEntries(self):
-        self.LoginEntry = tk.Entry(self)
-        self.LoginEntry.grid(row = 0, column = 1)
-        self.PasswordEntry = tk.Entry(self, show = "*")
-        self.PasswordEntry.grid(row = 1, column = 1)
-    
-    def TopLevelButtons(self):
-        self.LoginButton = tk.Button(self, text = "Login", command = self.onButtonPress)
-        self.LoginButton.grid(row = 2, column = 0, padx = 10, pady = 10)
-        self.ExitButton = tk.Button(self, text = "Exit", command = self.master.destroy)
-        self.ExitButton.grid(row = 2, column = 1, padx = 10, pady = 10)
-
+class Login():
+    def login(self, login_entry, password_entry, messagebox):
+        self.user = login_entry.get()
+        self.password = password_entry.get()
+        if self.user == 'Piotr' and self.password == "Kawicz":
+            self.withdraw()
+            self.master.deiconify()
+        else:
+            messagebox.showinfo("Login Invalid", "Invalid Login")
