@@ -2,6 +2,7 @@ import tkinter as tk
 from button_commands import ButtonCommands
 
 class Interface(tk.Frame):
+        
     def createLabels(self):
         self.newTaskLabel = tk.Label(self, text = "Add new task here!")
         self.newTaskLabel.grid(column = 0, row = 0, pady = 10, sticky = "N")

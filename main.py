@@ -1,18 +1,17 @@
 from login import Login
 from interface import Interface
+import tkinter as tk
+from tkinter import messagebox
 
 class MainApp():
     def __init__(self):
-        loginWindow = Login()
-        loginWindow.master.title("Login")
-        loginWindow.mainloop()
-        login = loginWindow.LoginEntry.get()
-        password = loginWindow.PasswordEntry.get()
-        if login == "Piotr" and password == "Kawicz":
-            loginWindow.destroy()
-            interface = Interface()
-            interface.master.title("To-Do-List")
-            interface.mainloop()
+        root = tk.Tk()
+        Login(root)
+        interface = Interface(root)
+        interface.master.title("To-Do-List")
+        interface.mainloop()
+        #if Login.onButtonPress(self):
+            #messagebox.showinfo("Login", "Login")
 
 if __name__=='__main__':
     MainApp()
