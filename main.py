@@ -2,6 +2,7 @@ from login_window import LoginWindow
 from interface import Interface
 import tkinter as tk
 from tkinter import messagebox
+from database_interface import DatabaseInterface
 
 class MainApp():
     def __init__(self):

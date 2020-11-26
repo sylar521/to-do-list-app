@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from login import Login
+#from login import Login
+from database_interface import DatabaseInterface
 from register_window import RegisterWindow
 
 class LoginWindow(tk.Toplevel):
@@ -13,6 +14,7 @@ class LoginWindow(tk.Toplevel):
         self.protocol("WM_DELETE_WINDOW", self.master.destroy)
         self.title("Login")
         self.createTopLevel()
+        self.conn = DatabaseInterface("to-do.db")
 
     def createTopLevel(self):
         self.TopLevelLabels()
@@ -34,7 +36,7 @@ class LoginWindow(tk.Toplevel):
     
     def TopLevelButtons(self):
         self.LoginButton = tk.Button(self, text = "Login", command = \
-            lambda:[Login.login(self, login_entry=self.LoginEntry, password_entry=self.PasswordEntry, messagebox=messagebox)])
+            lambda:[self.conn.login_user(login_entry=self.LoginEntry, password_entry=self.PasswordEntry, messagebox=messagebox, parent = self)])
         self.LoginButton.grid(row = 2, column = 2)
         self.ExitButton = tk.Button(self, text = "Exit", command = self.master.destroy)
         self.ExitButton.grid(row = 2, column = 3)

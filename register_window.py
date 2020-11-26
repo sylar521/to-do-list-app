@@ -1,6 +1,6 @@
 import tkinter as tk
-#from tkinter import messagebox
-#from login import Login
+from tkinter import messagebox
+from database_interface import DatabaseInterface
 
 class RegisterWindow(tk.Toplevel):
 
@@ -12,6 +12,8 @@ class RegisterWindow(tk.Toplevel):
         self.title("Register")
         self.createTopLevel()
         self.grab_set()
+        self.conn = DatabaseInterface('to-do.db')
+
 
     def createTopLevel(self):
         self.TopLevelLabels()
@@ -31,7 +33,10 @@ class RegisterWindow(tk.Toplevel):
         self.NewUserPasswordEntry.grid(row = 1, column = 1)
     
     def TopLevelButtons(self):
-        self.RegisterButton = tk.Button(self, text = "Register")
+        self.RegisterButton = tk.Button(self, text = "Register", command = \
+            lambda:[self.conn.register_new_user(loginEntr = self.NewUserLoginEntry, \
+                passwordEntr = self.NewUserPasswordEntry, messagebox = messagebox),
+                self.destroy()])
         self.RegisterButton.grid(row = 2, column = 0, sticky = "W")
         self.ExitButton = tk.Button(self, text = "Cancel", command = self.destroy)
         self.ExitButton.grid(row = 2, column = 3)
